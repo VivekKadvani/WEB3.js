@@ -1,12 +1,8 @@
-
 fs = require("fs")
 Web3 = require("web3")
 
 let web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
-
 let filecontent = fs.readFileSync("./contracts/demo.sol").toString();
-
-
 ABI = [
     {
         "inputs": [],
@@ -43,19 +39,11 @@ contract = new web3.eth.Contract(ABI);
 web3.eth.getAccounts().then((accounts) => {
     console.log("accounts: ", accounts);
     defaultAccount = accounts[0];
-
-
     contract.deploy({ data: bytecode })
         .send({ from: defaultAccount, gas: 5000000 })
         .on("receipt", (receipt) => {
             console.log("contract address:", receipt.contractAddress);
         }).then((demoContract) => {
-            demoContract.methods.show().call((err, data) => {
-                demoContract.methods.increment().call((err, data) => {
-                    console.log(data)
-                });
-                console.log("initial value:", data)
-            })
             demoContract.methods.show().call((err, data) => {
 
                 console.log("initial value:", data)
