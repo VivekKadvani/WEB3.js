@@ -1,3 +1,4 @@
+//deploy contract using web3 in local
 fs = require("fs")
 Web3 = require("web3")
 

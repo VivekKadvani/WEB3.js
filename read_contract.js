@@ -1,4 +1,4 @@
-//in this file we learn how to set custom proovider and call it 
+//in this file we learn how to set custom proovider and call it read operation
 const Web3 = require("web3");
 
 
